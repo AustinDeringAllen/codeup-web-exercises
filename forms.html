@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register with us</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <!-- https://request-inspector.glitch.me/ -->
+    <!-- https://hookb.in/W1zpVMomektjk8M8eLBd -->
+    <form method="POST" action="https://request-inspector.glitch.me/">
+        <label for="email">Email: </label>
+        <input type="text" name="email" id="email" placeholder="Email"> <br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" placeholder="Password"> <br>
+        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+
+        <h2>How did you hear about us?</h2>
+        <input type="checkbox" name="capture" id="radio1" value="billboard">
+        <label for="radio1">Billboard</label> <br>
+        <input type="checkbox" name="capture" id="radio2" value="radio">
+        <label for="radio2">Radio advertisement</label> <br>
+        <input type="checkbox" name="capture" id="radio3" value="internet">
+        <label for="radio3">Internet advertisement</label> <br>
+        <input type="checkbox" name="capture" id="radio4" value="other">
+        <label for="radio4">Other</label> <br>
+        <!-- If radios are given different name values you'll be able to select multiple radio buttons -->
+
+        <label for="browser">What web browser are you using?</label>
+        <select name="browser" id="browser">
+            <option value="ff">FireFox</option>
+            <option value="gc">Google Chrome</option>
+            <option value="op">Opera</option>
+            <option value="ie">Internet Explorer</option>
+        </select>
+        <br>
+        <button type="submit">Sign up!</button>
+    </form>
+    <!-- I notice that the URL changes, it doesn't have the info when it's POST -->
+    <!-- When you leave a name attribute off it won't send to the server -->
+    <!-- If you leave the ID off of a form input you can't click the label to edit the input -->
+</body>
+</html>
