@@ -4,7 +4,25 @@ line
 comment
 */
 
+/*Center the main heading*/
+header {
+    text-align: center;
+}
 
+/*Change headers*/
+h1, h2 {
+    color: blue;
+    text-decoration: underline;
+    cursor: crosshair;
+}
+
+.fancy-header {
+    color: purple; /* single line comment */
+    text-decoration: underline;
+    text-align: center;
+}
+
+/*Background color, Image, and Manipulation*/
 body {
     background-color: lightpink;
     background-image: url("../img/blue-and-red-plants-2505693.jpg");
@@ -14,18 +32,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
-header {
-    text-align: center;
-}
-
-.fancy-header {
-    color: purple; /* single line comment */
-    text-decoration: underline;
-    text-align: center;
-}
-
+/*Change list style*/
 ul {
     list-style: georgian;
 }
@@ -34,16 +41,15 @@ ol {
     list-style: upper-roman;
 }
 
-h1, h2 {
-    color: blue;
-    text-decoration: underline;
-}
+/*Added google fonts and change font in body above*/
 
+/*Changing table, tr, td size and rows*/
 table, td, tr, th {
     padding: 20px;
     font-size: 30px;
 }
 
+/*Change anchor tag stylings*/
 a:link {
     text-decoration: none;
     color: black;
