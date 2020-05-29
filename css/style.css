@@ -4,7 +4,60 @@ line
 comment
 */
 
+
+body {
+    background-color: lightpink;
+    background-image: url("../img/blue-and-red-plants-2505693.jpg");
+    background-blend-mode: color;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+header {
+    text-align: center;
+}
+
 .fancy-header {
     color: purple; /* single line comment */
     text-decoration: underline;
+    text-align: center;
+}
+
+ul {
+    list-style: georgian;
+}
+
+ol {
+    list-style: upper-roman;
+}
+
+h1, h2 {
+    color: blue;
+    text-decoration: underline;
+}
+
+table, td, tr, th {
+    padding: 20px;
+    font-size: 30px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: dodgerblue;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: lightblue;
+}
+
+a:active {
+    color: rgba(0,0,0,0);
 }
