@@ -3,11 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!--
+    <style>
+        .fancy-header {
+            color:blue;
+            text-decoration: underline;
+        }
+    </style>
+    -->
 </head>
 <body>
+    <!--
+        1. Color becomes red after adding the inline style.
+        2. Color is still red, after removing color becomes blue
+        3. done
+        4. Color is still blue after adding style to external stylesheet. After commenting out embedded style
+        sheet color switches to purple.
+        5. Specificity is important. Inline Styles > Embedded Styles > External Styles
+    -->
     <header>
         <a id="top"></a>
-        <h1>Welcome to Veridian Dynamics!</h1>
+        <h1 class="fancy-header">Welcome to Veridian Dynamics!</h1>
         <p>At Veridian Dynamics, <strong>we</strong> solve <em>your</em> problems with <strong><em>technology</em></strong>.</p>
         <hr>
     </header>
