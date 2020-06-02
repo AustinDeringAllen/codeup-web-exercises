@@ -13,7 +13,19 @@
 
     console.log(multiplied(5));
 
-    //
+    // Write a function that sings "Happy Birthday". Make it sing a name
+    function happyBirthday(name = "you") {
+        //return "Happy Birthday to you,\nHappy Birthday to you,\nHappy Birthday to " + name + "...\nHappy Birthday to you!"
+
+        return `
+        Happy Birthday to you,
+        Happy Birthday to you,
+        Happy Birthday to ${name}...
+        Happy Birthday to you! 👍
+        `
+    }
+
+    console.log(happyBirthday('dave'));
 </script>
 </body>
 </html>
