@@ -47,6 +47,7 @@ a {
 }
 .profile {
     background: var(--light-bg);
+    position: relative;
     height: 80px;
 }
 .btn {
@@ -81,7 +82,7 @@ a {
 
 .profile-image {
     position: absolute;
-    top: 235px;
+    top: -40px;
 }
 
 .profile-form {
