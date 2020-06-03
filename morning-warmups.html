@@ -10,7 +10,6 @@
     function multiplied(num) {
         return num * 5;
     }
-
     console.log(multiplied(5));
 
     // Write a function that sings "Happy Birthday". Make it sing a name
@@ -24,8 +23,17 @@
         Happy Birthday to you! 👍
         `
     }
-
     console.log(happyBirthday('dave'));
+
+    // Write a function that takes in a number and counts up 5
+    function countUpFive(number = 0) {
+        for(var i = number; i < number+5; i++) {
+            console.log(i);
+        }
+    }
+    countUpFive(1);
+
+    //
 </script>
 </body>
 </html>
