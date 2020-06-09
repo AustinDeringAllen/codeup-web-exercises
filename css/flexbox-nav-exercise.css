@@ -48,6 +48,14 @@ a:hover {
     color: blue;
 }
 
+.middle {
+    box-sizing: border-box;
+    border: 2px solid red;
+    height: 100vh;
+    position: absolute;
+    left: calc(50% - 1px);
+}
+
 /*
     The navbar must have the following:
 
@@ -62,3 +70,41 @@ a:hover {
     default styling is removed as needed from the body, unordered list and anchor tag elements ?
     logo is absolutely positioned to completely center text on the navbar X
 */
+
+/*Bonus CSS*/
+footer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.call-box {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #333333;
+    color: white;
+    padding: 2em;
+}
+
+.call-btn {
+    background-color: #e87231;
+    border-radius: 200px;
+    padding: 0 1em;
+}
+
+.call-btn a {
+    color: white;
+}
+
+.links-box-top ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.links-box-top .links-5 {
+    display: flex;
+    align-items: flex-start;
+}
