@@ -61,5 +61,4 @@ body {
         Read more about Flex Basis: https://java.codeup.com/appendix/further-reading/html-css/flexbox-additional-concepts/#flex-basis
     */
     flex-basis: calc(15em - 20px);
-
 }
