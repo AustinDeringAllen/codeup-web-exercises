@@ -174,18 +174,32 @@ const game = function() {
     if(play) {
         let number = parseFloat(prompt("Please enter a number"));
 
-        if(isEven(number)) {
-            alert("Your number is even");
+        if(isNaN(number + 100)) {
+            alert("Your input is not a number. Please refresh the page and try again");
         } else {
-            alert("Your number is odd");
-        }
+            switch(number) {
+                case 0:
+                    alert("Your number is 0");
+                    alert("Your number plus 100 is: 100");
+                    alert("Your number is neither positive nor negative. It is 0");
+                    break;
+                default:
 
-        alert("Your number plus 100 is: " + plus100(number));
+                    if(isEven(number)) {
+                        alert("Your number is even");
+                    } else {
+                        alert("Your number is odd");
+                    }
 
-        if(positiveOrNegative(number)) {
-            alert("Your number is positive!");
-        } else {
-            alert("Your number is negative");
+                    alert("Your number plus 100 is: " + plus100(number));
+
+                    if(positiveOrNegative(number)) {
+                        alert("Your number is positive!");
+                    } else {
+                        alert("Your number is negative");
+                    }
+                    break;
+            }
         }
     }
 }
