@@ -166,8 +166,9 @@ var luckyNumber = Math.floor(Math.random() * 6);
 let totalPrompt = parseFloat(prompt("Enter your total amount"));
 let afterDiscount = calculateTotal(luckyNumber, totalPrompt);
 
-alert(`You're total before the lucky number discount was $${totalPrompt}`);
-alert(`Youre total after the lucky number discount is: $${afterDiscount}`);
+alert(`Your lucky number was: ${luckyNumber}`);
+alert(`Your total before the lucky number discount was: $${totalPrompt}`);
+alert(`Your total after the lucky number discount is: $${afterDiscount}`);
 
 /**
  * TODO:
