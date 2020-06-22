@@ -213,7 +213,7 @@ const positiveOrNegative = function(number) {
 const game = function() {
     let play = confirm("Would you like to enter a number?");
     if(play) {
-        let number = +prompt("Please enter a number");
+        let number = parseFloat(prompt("Please enter a number"));
         if(isNaN(number)) {
             alert("Your input is not a number. Please refresh the page and try again.");
         } else {
@@ -228,37 +228,5 @@ const game = function() {
             }
         }
     }
-
-
-    // if(play) {
-    //     let number = parseFloat(prompt("Please enter a number"));
-    //     if(isNaN(number + 100)) {
-    //         alert("Your input is not a number. Please refresh the page and try again");
-    //     } else {
-    //         switch(number) {
-    //             case 0:
-    //                 alert("Your number is 0");
-    //                 alert("Your number plus 100 is: " + plus100(number));
-    //                 alert("Your number is neither positive nor negative. It is 0");
-    //                 break;
-    //             default:
-    //
-    //                 if(isEven(number)) {
-    //                     alert("Your number is even");
-    //                 } else {
-    //                     alert("Your number is odd");
-    //                 }
-    //
-    //                 alert("Your number plus 100 is: " + plus100(number));
-    //
-    //                 if(positiveOrNegative(number)) {
-    //                     alert("Your number is positive!");
-    //                 } else {
-    //                     alert("Your number is negative");
-    //                 }
-    //                 break;
-    //         }
-    //     }
-    // }
 }
 game();
