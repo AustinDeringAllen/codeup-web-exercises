@@ -199,10 +199,7 @@ alert(`Your total after the lucky number discount is: $${afterDiscount}`);
 // }
 
 const isEven = function(number) {
-    if(number % 2 === 0)
-        return 'even';
-    else
-        return 'odd';
+    return (number % 2 === 0) ? 'even' : 'odd';
 }
 
 const plus100 = function(number) {
@@ -210,10 +207,7 @@ const plus100 = function(number) {
 }
 
 const positiveOrNegative = function(number) {
-    if(number > 0)
-        return 'positive';
-    else
-        return 'negative';
+    return (number > 0) ? 'positive' : 'negative';
 }
 
 const game = function() {
