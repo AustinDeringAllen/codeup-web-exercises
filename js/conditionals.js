@@ -29,23 +29,31 @@ var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
 
 const analyzeColor = function(color) {
-    if(color === 'red') {
-        return "red is the color of a rose";
-    } else if(color === 'orange') {
-        return "orange is the color of an orange";
-    } else if(color === 'yellow') {
-        return "yellow is the color of a sunflower";
-    } else if(color === 'green') {
-        return "green is the color of grass"
-    } else if(color === 'blue') {
-        return "blue is the color of the sky";
-    } else if(color === 'indigo') {
-        return "indigo is the color of blueberries";
-    } else if(color === 'purple') {
-        return "purple is the color of grapes";
+    if(color === 'blue') {
+        return 'blue is the color of the sky';
+    } else if(color === 'red') {
+        return 'Strawberries are red';
     } else {
         return "I don't know anything about " + color;
     }
+
+    // if(color === 'red') {
+    //     return "red is the color of a rose";
+    // } else if(color === 'orange') {
+    //     return "orange is the color of an orange";
+    // } else if(color === 'yellow') {
+    //     return "yellow is the color of a sunflower";
+    // } else if(color === 'green') {
+    //     return "green is the color of grass"
+    // } else if(color === 'blue') {
+    //     return "blue is the color of the sky";
+    // } else if(color === 'indigo') {
+    //     return "indigo is the color of blueberries";
+    // } else if(color === 'purple') {
+    //     return "purple is the color of grapes";
+    // } else {
+    //     return "I don't know anything about " + color;
+    // }
 }
 
 /**
