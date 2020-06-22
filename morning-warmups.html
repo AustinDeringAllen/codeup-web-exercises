@@ -115,6 +115,40 @@
     }
     countFromBy(10, 5);
 
+    console.log('Function that takes in a number');
+    function magic8Ball(num) {
+        switch(num) {
+            case 1:
+                return 'As I see it, yes.';
+                break;
+            case 2:
+                return 'Ask again later.';
+                break;
+            case 3:
+                return 'Better not tell you now.';
+                break;
+            case 4:
+                return 'Cannot predict now.';
+                break;
+            case 5:
+                return 'Concentrate and ask again.';
+                break;
+            case 6:
+                return "Don't count on it.";
+                break;
+            case 7:
+                return "Outlook not so good.";
+                break;
+            case 8:
+                return "Outlook is good.";
+                break;
+            default:
+                return "Oops! Enter a number between 1 and 8";
+                break;
+        }
+    }
+    console.log(magic8Ball(8));
+
 </script>
 <p id="elementyById">yes</p>
 </body>
