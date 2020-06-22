@@ -186,9 +186,23 @@ alert(`Your total after the lucky number discount is: $${afterDiscount}`);
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+// const isEven = function(number) {
+//     return number % 2 === 0;
+// }
+//
+// const plus100 = function(number) {
+//     return number + 100;
+// }
+//
+// const positiveOrNegative = function(number) {
+//         return number > 0;
+// }
 
 const isEven = function(number) {
-    return number % 2 === 0;
+    if(number % 2 === 0)
+        return 'even';
+    else
+        return 'odd';
 }
 
 const plus100 = function(number) {
@@ -196,41 +210,61 @@ const plus100 = function(number) {
 }
 
 const positiveOrNegative = function(number) {
-        return number > 0;
+    if(number > 0)
+        return 'positive';
+    else
+        return 'negative';
 }
 
 const game = function() {
     let play = confirm("Would you like to enter a number?");
     if(play) {
-        let number = parseFloat(prompt("Please enter a number"));
-
-        if(isNaN(number + 100)) {
-            alert("Your input is not a number. Please refresh the page and try again");
+        let number = +prompt("Please enter a number");
+        if(isNaN(number)) {
+            alert("Your input is not a number. Please refresh the page and try again.");
         } else {
-            switch(number) {
-                case 0:
-                    alert("Your number is 0");
-                    alert("Your number plus 100 is: 100");
-                    alert("Your number is neither positive nor negative. It is 0");
-                    break;
-                default:
-
-                    if(isEven(number)) {
-                        alert("Your number is even");
-                    } else {
-                        alert("Your number is odd");
-                    }
-
-                    alert("Your number plus 100 is: " + plus100(number));
-
-                    if(positiveOrNegative(number)) {
-                        alert("Your number is positive!");
-                    } else {
-                        alert("Your number is negative");
-                    }
-                    break;
+            if(number === 0) {
+                alert("Your number is 0");
+                alert("Your number plus 100 is: " + plus100(number));
+                alert("Your number is neither positive nor negative. It is 0");
+            } else {
+                alert("Your number is " + isEven(number));
+                alert("Your number plus 100 is " + plus100(number));
+                alert("Your number is " + positiveOrNegative(number));
             }
         }
     }
+
+
+    // if(play) {
+    //     let number = parseFloat(prompt("Please enter a number"));
+    //     if(isNaN(number + 100)) {
+    //         alert("Your input is not a number. Please refresh the page and try again");
+    //     } else {
+    //         switch(number) {
+    //             case 0:
+    //                 alert("Your number is 0");
+    //                 alert("Your number plus 100 is: " + plus100(number));
+    //                 alert("Your number is neither positive nor negative. It is 0");
+    //                 break;
+    //             default:
+    //
+    //                 if(isEven(number)) {
+    //                     alert("Your number is even");
+    //                 } else {
+    //                     alert("Your number is odd");
+    //                 }
+    //
+    //                 alert("Your number plus 100 is: " + plus100(number));
+    //
+    //                 if(positiveOrNegative(number)) {
+    //                     alert("Your number is positive!");
+    //                 } else {
+    //                     alert("Your number is negative");
+    //                 }
+    //                 break;
+    //         }
+    //     }
+    // }
 }
 game();
