@@ -28,7 +28,7 @@
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-const analyzeColor = function(color) {
+let analyzeColor = function(color) {
     if(color === 'blue') {
         return 'blue is the color of the sky';
     } else if(color === 'red') {
@@ -68,6 +68,27 @@ console.log(analyzeColor(randomColor));
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
+
+analyzeColor = function(color) {
+    switch(color) {
+        case 'red':
+            return 'Strawberries are red';
+        case 'orange':
+            return 'Oranges are orange';
+        case 'yellow':
+            return 'Sunflowers are yellow';
+        case 'green':
+            return 'Grass is green';
+        case 'blue':
+            return 'The sky is blue';
+        case 'indigo':
+            return 'Blueberries are indigo'
+        case 'violet':
+            return 'Grapes are violet';
+        default:
+            return "I don't know anything about " + color;
+    }
+}
 
 /**
  * TODO:
