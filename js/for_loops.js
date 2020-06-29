@@ -7,7 +7,7 @@ showMultiplicationTable(7);
 
 const oddOrEven = function() {
     for(let i=0; i<10; i++) {
-        let random = Math.floor((Math.random() * 200) + 1);
+        let random = Math.floor(Math.random() * 20) + 180;
         console.log(`${random} is ${(random % 2 === 0) ? "even" : "odd"}`);
     }
 }
