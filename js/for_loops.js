@@ -15,9 +15,11 @@ oddOrEven();
 
 const numberPyramid = function() {
     for(let i=1; i<=9; i++) {
+        let STRING = ""
         for (let j = 0; j < i; j++) {
-            console.log(i);
+            STRING += i;
         }
+        console.log(STRING);
     }
 }
 numberPyramid();
