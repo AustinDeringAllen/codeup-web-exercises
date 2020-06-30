@@ -159,6 +159,14 @@
     toggleLights();
     console.log(lightOn);
 
+    // Using a loop and conditional. Go through 1-10. 1 is odd, 2 is even, 3 is odd, 4 is even.
+    function countOddEven(num = 10) {
+        for(let i=1; i<=num; i++) {
+            console.log(`${i} is ${(i % 2 === 0) ? 'even' : 'odd'}`);
+        }
+    }
+    countOddEven();
+
 
 </script>
 <p id="elementyById">yes</p>
