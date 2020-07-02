@@ -36,4 +36,6 @@
     listString += "</ul>";
     console.log(listString);
 
+    // let listString = ["<ul><li>" + [planetsArray.join("</li><li>")] + "</li><ul>]
+
 })();
