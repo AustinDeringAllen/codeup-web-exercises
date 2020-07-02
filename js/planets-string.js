@@ -28,4 +28,12 @@
     planetsString = planetsArray.join("<br>");
     console.log(planetsString);
 
+    let listString = "";
+    listString += "<ul>";
+    for(let i=0; i<planetsArray.length; i++) {
+        listString += `<li>${planetsArray[i]}</li>`;
+    }
+    listString += "</ul>";
+    console.log(listString);
+
 })();
