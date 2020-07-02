@@ -45,6 +45,10 @@
      */
 
     names.forEach(e => console.log(e));
+    console.log("FOREACHfunction");
+    names.forEach(function(e) {
+        console.log(e);
+    });
 
     /**
      * TODO:
