@@ -179,6 +179,28 @@
     }
     console.log(doubleChar("String"));
 
+    // Possible Warmup from Thursday july 2nd
+    // Use Number.isInteger & Number.MAX_SAFE_INTEGER and write a function isPrime.
+    // function isPrime(number) {
+    //
+    // }
+
+    // FizzBuzz
+    function fizzBuzz() {
+        for(let i=0 ;i<=100; i++) {
+            if(i % 3 === 0 && i % 5 === 0) {
+                console.log(`${i}: FizzBuzz`);
+            } else if(i % 5 === 0) {
+                console.log(`${i}: Buzz`);;
+            } else if(i % 3 === 0) {
+                console.log(`${i}: Fizz`);
+            } else {
+                console.log(i);
+            }
+        }
+    }
+    fizzBuzz();
+
 
 </script>
 <p id="elementyById">yes</p>
