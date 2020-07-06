@@ -15,6 +15,7 @@
     let person = {
         firstName: "Austin",
         lastName: "Dering-Allen"
+        //sayHello: function() {}
     }
     console.log(person.firstName);
     console.log(person.lastName);
