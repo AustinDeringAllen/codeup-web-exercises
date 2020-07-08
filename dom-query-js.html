@@ -45,15 +45,12 @@
 
         // TODO: Set text color on every other list item to grey
         // TODO: Set text color of li with dbid = 1 to blue
-        for(let i=0; i<listItems.length; i+=2) {
+        for(let i=0; i<listItems.length; i++) {
             if(listItems[i].getAttribute("data-dbid") === "1") {
                 listItems[i].style.color = "blue";
-            }
-            if(i % 2 === 0) {
+            } else if(i % 2 === 0) {
                 listItems[i].style.color = "grey";
             }
-
-            //(listItems[i].getAttribute("data-dbid") === "1") ? listItems[i].style.color = "blue" : listItems[i].style.color = "grey";
         }
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
