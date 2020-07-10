@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #map {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <form>
+        <br>
+        <label for="zoom-level">Zoom Level: </label>
+        <select name="zoom-level" id="zoom-level">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <br> <br>
+        <label for="goTo">Add a new marker at: </label>
+        <input type="text" id="goTo" placeholder="Address goes here">
+    </form>
+    <br>
+    <button id="toggle">Toggle Markers</button>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+    <script src="js/keys.js"></script>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+    <!-- Custom JS -->
+    <script>
+        (function() {
+            "use strict";
+
+            const centralAddress = "17800 Devonshire St, Northridge, CA 91325";
+            const restauraunts = [
+                {
+                    name: "Rincome Restauraunt",
+                    address: "17050 Devonshire St, Northridge, CA 91325",
+                    website: "http://www.rincomenorthridge.com/",
+                    image: "http://www.blizzstatic.com/dynamicmedia/image/1217/5a38f0b16b868.jpg"
+                },
+                {
+                    name: "Wendy's",
+                    address: "18507 Devonshire St, Northridge, CA 91324",
+                    website: "https://www.wendys.com/home",
+                    image: "https://app.wendys.com/unified/assets/menu/productGroups/121_medium_US_en.jpg"
+                },
+                {
+                    name: "Wangdoyaji (왕돼지)",
+                    address: "7608 Reseda Blvd, Reseda, CA 91335",
+                    website: "#",
+                    image: "https://s3-media0.fl.yelpcdn.com/bphoto/9-NU4e2f45MpIouCjUuNmA/o.jpg"
+                }
+            ];
+            let markers = [];
+
+            // Start Map
+            mapboxgl.accessToken = mapboxKey;
+            let map = new mapboxgl.Map({
+                container: "map",
+                style: "mapbox://styles/mapbox/streets-v9",
+                zoom: 10
+            });
+
+            // Set up initial map locations
+            const setMapLocations = function() {
+                geocode(centralAddress,mapboxKey).then(function(data) {
+                    map.setCenter(data);
+                });
+
+                restauraunts.forEach((e) => {
+                    geocode(e.address, mapboxKey).then(function(data) {
+                        let marker = new mapboxgl.Marker()
+                            .setLngLat(data)
+                            .setPopup(new mapboxgl.Popup().setHTML(`<h4><a target="_blank" href="${e.website}">${e.name}</a></h4>`))
+                            .addTo(map)
+                            .getElement();
+                        markers.push(marker);
+                    });
+                });
+            }
+            setMapLocations();
+
+            // Change the zoom level when select is changed
+            const changeZoom = function() {
+                let zoomLevel = document.getElementById("zoom-level").value;
+                console.log(zoomLevel);
+                map.setZoom(zoomLevel);
+                console.log(map.zoom);
+            }
+            document.getElementById("zoom-level").addEventListener("change",changeZoom);
+
+            // Go to and add marker when a new location is entered
+            const goTo = function() {
+                let newAddress = document.getElementById("goTo").value;
+                geocode(newAddress,mapboxKey).then(function(data) {
+                    map.setCenter(data);
+                    let marker = new mapboxgl.Marker()
+                        .setLngLat(data)
+                        .addTo(map)
+                        .getElement();
+                    markers.push(marker);
+                });
+            }
+            document.getElementById("goTo").addEventListener("change",goTo);
+
+            // Toggle all the markers that have been placed
+            const toggleMarkers = function() {
+                markers.forEach((e) => {
+                    e.hidden = !e.hidden;
+                });
+            }
+            document.getElementById("toggle").addEventListener("click",toggleMarkers);
+        })();
+    </script>
+</body>
+</html>
