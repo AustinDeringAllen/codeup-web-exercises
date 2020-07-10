@@ -102,7 +102,9 @@
             const goTo = function() {
                 let newAddress = document.getElementById("goTo").value;
                 geocode(newAddress,mapboxKey).then(function(data) {
-                    map.setCenter(data);
+                    map.jumpTo({
+                        center: data
+                    });
                     let marker = new mapboxgl.Marker()
                         .setLngLat(data)
                         .addTo(map)
