@@ -81,7 +81,7 @@
                         let marker = new mapboxgl.Marker()
                             .setLngLat(data)
                             .addTo(map)
-                            .setPopup(new mapboxgl.Popup().setHTML(`<h2><a target="_blank" href="${e.website}">${e.name}</a></h2><br><img src="${e.image}" style="height: 100%;width: 100%">`))
+                            .setPopup(new mapboxgl.Popup().setHTML(`<h2><a target="_blank" href="${e.website}">${e.name}</a></h2><h4>${e.address}</h4><img src="${e.image}" style="height: 100%;width: 100%">`))
                             .getElement();
                         markers.push(marker);
                     });
