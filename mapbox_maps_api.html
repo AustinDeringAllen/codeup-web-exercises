@@ -80,8 +80,8 @@
                     geocode(e.address, mapboxKey).then(function(data) {
                         let marker = new mapboxgl.Marker()
                             .setLngLat(data)
-                            .setPopup(new mapboxgl.Popup().setHTML(`<h4><a target="_blank" href="${e.website}">${e.name}</a></h4>`))
                             .addTo(map)
+                            .setPopup(new mapboxgl.Popup().setHTML(`<h4><a target="_blank" href="${e.website}">${e.name}</a></h4>`))
                             .getElement();
                         markers.push(marker);
                     });
