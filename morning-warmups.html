@@ -204,7 +204,7 @@
 
     const sequence = [0,1];
     function fib(n) {
-        for(let i=1; i<n; i++) {
+        for(let i=1; i<n-1; i++) {
             sequence.push(sequence[i-1] + sequence[i]);
         }
         return sequence[n-1];
