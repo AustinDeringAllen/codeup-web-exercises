@@ -201,6 +201,17 @@
         }
     }
     fizzBuzz();
+
+    const sequence = [0,1];
+    function fib(n) {
+        for(let i=1; i<n; i++) {
+            sequence.push(sequence[i-1] + sequence[i]);
+        }
+        return sequence[n-1];
+    }
+    console.log(sequence);
+    console.log(fib(12));
+
 </script>
 <p id="elementyById">yes</p>
 </body>
