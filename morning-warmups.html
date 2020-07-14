@@ -212,6 +212,15 @@
     console.log(sequence);
     console.log(fib(12));
 
+    // three digit number, returns number in 10s spot
+    function return10s() {
+        let randomNumber = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+        console.log(`Random Number is: ${randomNumber}`);
+        return Number(String(randomNumber)[1]);
+    }
+
+    console.log(`The digit in the 10s place is: ${return10s()}`);;
+
 </script>
 <p id="elementyById">yes</p>
 </body>
