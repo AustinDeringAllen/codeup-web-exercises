@@ -9,6 +9,13 @@
 </head>
 <body>
 
+    <h1>This text should load before the alert happens</h1>
+
     <script src="js/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            alert('Page Loaded!');
+        })
+    </script>
 </body>
 </html>
