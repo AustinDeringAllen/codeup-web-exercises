@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 id="codeup">This text should load before the alert happens</h1>
+    <h1 id="codeup">This is a Highlighted H1 Element</h1>
     <p class="codeup">Unordered List Below</p>
     <ul>
         <li id="list-1">List Item One</li>
@@ -36,7 +36,7 @@
             // $('h1').css('background-color', 'dodgerblue');
             // $('p').css('background-color', 'dodgerblue');
             // $('li').css('background-color', 'dodgerblue');
-            alert($('#list-1').text());
+            alert($('h1').text());
 
             $('h1, li, p').css('background-color', 'dodgerblue');
         })
