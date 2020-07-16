@@ -8,13 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-
     <h1>This text should load before the alert happens</h1>
+    <p class="blue">Unordered List Below</p>
+    <ul>
+        <li id="list-1">List Item One</li>
+        <li>List Item Two</li>
+        <li class="blue">List Item Three</li>
+    </ul>
+
+    <div class="dylan">
+        <p>p tag inside of a div</p>
+    </div>
 
     <script src="js/jquery-3.5.1.js"></script>
     <script>
         $(document).ready(function() {
-            alert('Page Loaded!');
+            alert($('#list-1').text());
         })
     </script>
 </body>
