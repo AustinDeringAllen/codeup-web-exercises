@@ -219,7 +219,26 @@
         return Number(String(randomNumber)[1]);
     }
 
-    console.log(`The digit in the 10s place is: ${return10s()}`);;
+    console.log(`The digit in the 10s place is: ${return10s()}`);
+
+    // Write a function that'll return an array sorted in reverse alphabetical order. It should return null if
+    // any element within hte array is not a string.
+    const names = ["Dylan", "Austin", "Christian", "Eugene", "Benjamin"];
+    function reverseAlphabetical(array) {
+        let failed = false;
+
+        array.forEach(function(e) {
+            if(typeof e !== "string")
+                failed = true;
+        });
+
+        if(failed) {
+            return null;
+        }
+        return array.sort().reverse();
+    }
+
+    console.log(reverseAlphabetical(names));
 
 </script>
 <p id="elementyById">yes</p>
