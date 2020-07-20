@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Konami Code</title>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body style='background-image: url("https://cdna.artstation.com/p/assets/images/images/020/430/268/large/daniel-bogni-donkey-kong-country.jpg?1567725489")'>
+
+    <iframe id="background-player" width="0" height="0" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <script src="js/jquery-3.5.1.js"></script>
+    <script>
+        "use strict";
+
+        $(document).ready(function() {
+            let audio = [$('#myAudio')];
+            // up down left right b a x y r l start
+            let validKeys = [38, 40, 37, 39, 66, 65, 88, 89, 82, 76, 13];
+            let keyCode = [];
+            $(document).keyup(function(e) {
+                if(validKeys.indexOf(e.keyCode) !== -1) {
+                    if(e.keyCode === 13) {
+                        let finalCode = keyCode.join('');
+                        switch(finalCode) {
+                            case "38384040373937396665":
+                                alert('30 Lives Activated!');
+                                $('#background-player').attr('src','https://www.youtube.com/embed/O04bPRzqEEk?autoplay=1');
+                                $('body').css('background-image', 'url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/829d5a73-02dc-438e-919f-0f08d1ad965d/d3g1cc8-de1b4879-79b7-414a-b035-2d9a5aeffd12.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODI5ZDVhNzMtMDJkYy00MzhlLTkxOWYtMGYwOGQxYWQ5NjVkXC9kM2cxY2M4LWRlMWI0ODc5LTc5YjctNDE0YS1iMDM1LTJkOWE1YWVmZmQxMi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.W0OK_iUkz6xb3ziPgM0pSoGHJxfqxurJCzR7xPe5DZI")');
+                                break;
+                            case "7682888938":
+                                $('#background-player').attr('src','https://www.youtube.com/embed/_8tVg02kG5A?autoplay=1');
+                                $('body').css('background-image', 'url("https://cdn.gamer-network.net/2017/usgamer/mario_world_review_featured.jpg/EG11/thumbnail/1920x1080/format/jpg/quality/65/super-mario-world-review.jpg")');
+                                break;
+                        }
+                        keyCode = [];
+                    } else {
+                        keyCode.push(e.keyCode);
+                    }
+                } else {
+
+                }
+                console.log(e.keyCode);
+                console.log(keyCode);
+            });
+        });
+    </script>
+</body>
+</html>

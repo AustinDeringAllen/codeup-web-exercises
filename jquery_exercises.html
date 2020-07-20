@@ -6,6 +6,23 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .background {
+            background-color: lightgreen;
+        }
+
+        .size {
+            font-size: 18px;
+        }
+
+        .color {
+            color: red;
+        }
+
+        li {
+            width: fit-content;
+        }
+    </style>
 </head>
 <body>
     <h1 id="codeup">This is a Highlighted H1 Element</h1>
@@ -22,6 +39,7 @@
 
     <script src="js/jquery-3.5.1.js"></script>
     <script>
+        // TODO: jQuery Introduction Exercise
         // $(document).ready(function() {
         //     alert($('#list-1').text());
         // })
@@ -30,16 +48,36 @@
         //     $('.codeup').css('border', '1px solid #F00');
         // });
 
+        // $(document).ready(function() {
+        //     $('li').css('font-size', '20px');
+        //
+        //     // $('h1').css('background-color', 'dodgerblue');
+        //     // $('p').css('background-color', 'dodgerblue');
+        //     // $('li').css('background-color', 'dodgerblue');
+        //     alert($('h1').text());
+        //
+        //     $('h1, li, p').css('background-color', 'dodgerblue');
+        // })
+
+        // TODO: jQuery Mouse Events Exercise
         $(document).ready(function() {
-            $('li').css('font-size', '20px');
+            $('h1').click(function() {
+                $(this).toggleClass('background');
+            })
+            $('p').dblclick(function() {
+               $(this).toggleClass('size');
+            });
+            $('li').hover(
+                function(){$(this).toggleClass('color')},
+                function(){$(this).toggleClass('color')}
+            );
+        });
 
-            // $('h1').css('background-color', 'dodgerblue');
-            // $('p').css('background-color', 'dodgerblue');
-            // $('li').css('background-color', 'dodgerblue');
-            alert($('h1').text());
-
-            $('h1, li, p').css('background-color', 'dodgerblue');
-        })
+        switch(number) {
+            case "number":
+                console.log(1);
+                break;
+        }
     </script>
 </body>
 </html>
