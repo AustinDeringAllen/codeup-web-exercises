@@ -6,28 +6,104 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Konami Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
         html, body {
+            background-color: #f3f3f3;
             margin: 0;
             height: 100%;
             overflow: hidden;
             background-size: cover;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .center {
+            text-align: center;
+            overflow: hidden;
+            position: absolute;
+            max-height: 150px;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 44.5px;
+            border-radius: 25px;
+            background-color: rgba(255,255,255,0.8);
+        }
+
+        h2 {
+            overflow: hidden;
+        }
+
+        .spanContainer {
+            margin: 1px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 50%;
+        }
+
+        .letterSpan {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
+            border-radius: 50%;
         }
     </style>
 </head>
-<body style='background-image: url("https://cdna.artstation.com/p/assets/images/images/020/430/268/large/daniel-bogni-donkey-kong-country.jpg?1567725489")'>
+<body>
+    <div class="center">
+        <h1>Enter a cheat code using the keyboard 😳</h1>
+        <h2></h2>
+    </div>
 
     <iframe id="background-player" width="0" height="0" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
     <script src="js/jquery-3.5.1.js"></script>
     <script>
         "use strict";
 
+        const pushText = function(text) {
+            switch(text) {
+                case 38: // Up
+                    return "↑";
+                    break;
+                case 40: // Down
+                    return "↓"
+                    break;
+                case 37: // Left
+                    return "←";
+                    break;
+                case 39: // Right
+                    return "→";
+                    break;
+                case 65: // A
+                    return "A";
+                    break;
+                case 66: // B
+                    return "B";
+                    break;
+                case 88: // X
+                    return "X";
+                    break;
+                case 89: // Y
+                    return "Y";
+                    break;
+                case 76: // L
+                    return "L";
+                    break;
+                case 82: // R
+                    return "R";
+                    break;
+            }
+        }
+
         $(document).ready(function() {
             let audio = [$('#myAudio')];
-            // up down left right b a x y r l start
             let validKeys = [38, 40, 37, 39, 66, 65, 88, 89, 82, 76, 13];
-            let keyCode = [];
+            let keyCode = [], text;
             $(document).keyup(function(e) {
                 if(validKeys.indexOf(e.keyCode) !== -1) {
                     if(e.keyCode === 13) {
@@ -40,11 +116,26 @@
                                 break;
                             case "7682888938":
                                 $('#background-player').attr('src','https://www.youtube.com/embed/_8tVg02kG5A?autoplay=1');
-                                $('body').css('background-image', 'url("https://cdn.gamer-network.net/2017/usgamer/mario_world_review_featured.jpg/EG11/thumbnail/1920x1080/format/jpg/quality/65/super-mario-world-review.jpg")');
+                                $('body').css('background-image', 'url("https://images8.alphacoders.com/721/721105.jpg")');
+                                break;
+                            case "768276827676828265":
+                                $('#background-player').attr('src','https://www.youtube.com/embed/Wm3uBFKb4YA?autoplay=1');
+                                $('body').css('background-image','url("https://images8.alphacoders.com/522/thumb-1920-522575.jpg")');
+                                break;
+                            case "4065826689406589":
+                                $('#background-player').attr('src','https://www.youtube.com/embed/lS7_tcwsj4E?autoplay=1');
+                                $('body').css('background-image','url("https://cdna.artstation.com/p/assets/images/images/020/430/268/large/daniel-bogni-donkey-kong-country.jpg?1567725489")');
+                                break;
+                            case "8888896665":
+                                $('#background-player').attr('src','https://www.youtube.com/embed/9xZUISErsxg?autoplay=1');
+                                $('body').css('background-image','url("https://images2.alphacoders.com/531/531879.jpg")');
                                 break;
                         }
-                        keyCode = [];
+                        keyCode = [], text = "";
+                        $('h2').html(text);
                     } else {
+                        text = pushText(e.keyCode);
+                        $('h2').append(`<div class='spanContainer'><span class='letterSpan'>${text}</span></div>`);
                         keyCode.push(e.keyCode);
                     }
                 } else {
