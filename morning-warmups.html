@@ -237,8 +237,16 @@
         }
         return array.sort().reverse();
     }
-
     console.log(reverseAlphabetical(names));
+
+    // Write a JS function that takes in two arguments, and returns if the first value is evenly divisible by the second argument.
+    function evenlyDivisible(one,two) {
+        if(typeof one !== "number" || typeof two !== "number")
+            return null;
+
+        return one % two === 0;
+    }
+    console.log(evenlyDivisible(12,3));
 
 </script>
 <p id="elementyById">yes</p>
