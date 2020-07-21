@@ -14,6 +14,35 @@
         .highlight {
             background-color: #fcfbc9;
         }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .frame {
+            height: 500px;
+            width: 500px;
+            background-color: black;
+        }
+
+        .one {
+            background-image: url('https://i.imgur.com/nif7ztU.jpg');
+        }
+
+        .two {
+            background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ca9204ed-1f2f-4553-8a03-bea29ae6878e/d84v1vk-ac0f785f-4c3b-4b1c-9fcb-26febafe2c79.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvY2E5MjA0ZWQtMWYyZi00NTUzLThhMDMtYmVhMjlhZTY4NzhlXC9kODR2MXZrLWFjMGY3ODVmLTRjM2ItNGIxYy05ZmNiLTI2ZmViYWZlMmM3OS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.M52hYTbuFQRgXZAPewVC0WGaVQVAum2QUL950akmpco');
+        }
+
+        .three {
+            background-image: url('https://12ax7web.s3.amazonaws.com/accounts/1/products/1986199880062/Milkyway-Cat_800x800_SEPS-500x500.jpg');
+        }
     </style>
 </head>
 <body>
@@ -54,27 +83,49 @@
 
     <ul>
         <h3>National Park 1</h3>
-        <li>Fact 1</li>
-        <li>Fact 2</li>
-        <li>Fact 3</li>
-        <li>Fact 4</li>
+        <ul>
+            <li>Fact 1</li>
+            <li>Fact 2</li>
+            <li>Fact 3</li>
+            <li>Fact 4</li>
+        </ul>
     </ul>
 
     <ul>
         <h3>National Park 2</h3>
-        <li>Fact 1</li>
-        <li>Fact 2</li>
-        <li>Fact 3</li>
-        <li>Fact 4</li>
+        <ul>
+            <li>Fact 1</li>
+            <li>Fact 2</li>
+            <li>Fact 3</li>
+            <li>Fact 4</li>
+        </ul>
     </ul>
 
     <ul>
         <h3>National Park 3</h3>
-        <li>Fact 1</li>
-        <li>Fact 2</li>
-        <li>Fact 3</li>
-        <li>Fact 4</li>
+        <ul>
+            <li>Fact 1</li>
+            <li>Fact 2</li>
+            <li>Fact 3</li>
+            <li>Fact 4</li>
+        </ul>
     </ul>
+
+    <div class="container">
+        <div class="col">
+            <div class="frame one"></div>
+            <button id="left" class="swap">Swap</button>
+        </div>
+        <div class="col">
+            <div class="frame two"></div>
+            <button id="center" class="swap">Swap</button>
+        </div>
+        <div class="col">
+            <div class="frame three"></div>
+            <button id="right" class="swap">Swap</button>
+        </div>
+    </div>
+
 
     <script src="js/jquery-3.5.1.js"></script>
     <script>
@@ -96,16 +147,51 @@
             });
 
             $('#yellow-btn').click(function() {
-               $('ul').each(function(index) {
-                  $(this).children().last().css('background-color','yellow');
-               });
+                $('h3').each(function(index) {
+                   $(this).next().children().last().css('background-color','yellow');
+                });
             });
 
             $('h3').click(function() {
-               $(this).siblings().css('font-weight','bold');
+               $(this).next().children().css('font-weight','bold');
             });
 
+            $('li').click(function() {
+                $(this).parent().children().first().css('color','blue');
+            });
 
+            $('.swap').click(function() {
+                let id = $(this).attr('id');
+                let tempOne;
+                let tempTwo;
+                switch(id) {
+                    case 'left':
+                        tempOne = $(this).siblings().first().css('background-image');
+                        tempTwo = $('#center').siblings().first().css('background-image');
+                        $('#center').siblings().first().css('background-image',tempOne);
+                        $(this).siblings().first().css('background-image', tempTwo);
+                        break;
+                    case 'center':
+                        let random = Math.round(Math.random());
+                        tempOne = $(this).siblings().first().css('background-image');
+                        if(random) {
+                            tempTwo = $('#right').siblings().first().css('background-image');
+                            $('#right').siblings().first().css('background-image',tempOne);
+                            $(this).siblings().first().css('background-image', tempTwo);
+                        } else {
+                            tempTwo = $('#left').siblings().first().css('background-image');
+                            $('#left').siblings().first().css('background-image',tempOne);
+                            $(this).siblings().first().css('background-image', tempTwo);
+                        }
+                        break;
+                    case 'right':
+                        tempOne = $(this).siblings().first().css('background-image');
+                        tempTwo = $('#center').siblings().first().css('background-image');
+                        $('#center').siblings().first().css('background-image',tempOne);
+                        $(this).siblings().first().css('background-image', tempTwo);
+                        break;
+                }
+            })
         });
     </script>
 </body>
