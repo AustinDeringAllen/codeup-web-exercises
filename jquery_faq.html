@@ -10,6 +10,10 @@
         .invisible {
             visibility: hidden;
         }
+
+        .highlight {
+            background-color: #fcfbc9;
+        }
     </style>
 </head>
 <body>
@@ -45,5 +49,26 @@
         <dt>Question Ten</dt>
         <dd class="invisible">Answer</dd>
     </dl>
+
+    <script src="js/jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('h1').append('<button>Show Answers</button>');
+
+            $('button').click(function() {
+                let innerText = $(this).text();
+                if(innerText.indexOf('Show') !== -1) {
+                    $(this).text('Hide Answers');
+                } else {
+                    $(this).text('Show Answers');
+                }
+                $('dd').toggleClass('invisible');
+            });
+
+            $('dt').click(function() {
+               $(this).toggleClass('highlight');
+            });
+        });
+    </script>
 </body>
 </html>
