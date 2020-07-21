@@ -50,6 +50,8 @@
         <dd class="invisible">Answer</dd>
     </dl>
 
+    <button id="yellow-btn">Make last Li Yellow</button>
+
     <ul>
         <h3>National Park 1</h3>
         <li>Fact 1</li>
@@ -77,9 +79,9 @@
     <script src="js/jquery-3.5.1.js"></script>
     <script>
         $(document).ready(function(){
-            $('h1').append('<br><button>Show Answers</button>');
+            $('h1').append('<br><button id="btn-show">Show Answers</button>');
 
-            $('button').click(function() {
+            $('#btn-show').click(function() {
                 let innerText = $(this).text();
                 if(innerText.indexOf('Show') !== -1) {
                     $(this).text('Hide Answers');
@@ -91,6 +93,12 @@
 
             $('dt').click(function() {
                $(this).toggleClass('highlight');
+            });
+
+            $('#yellow-btn').click(function() {
+               $('ul').each(function(index) {
+                  $(this).children().last().css('background-color','yellow');
+               });
             });
         });
     </script>
