@@ -248,6 +248,18 @@
     }
     console.log(evenlyDivisible(12,3));
 
+    // Take in inches, output height 78 => 6'6;
+    function inchesToHeight(input) {
+        if(typeof input !== "number") {
+            return null;
+        }
+        return `${Math.floor(input / 12)}'${input % 12}`;
+    }
+
+    console.log(inchesToHeight(78)); // 6'6
+    console.log(inchesToHeight(65)); // 5'5
+    console.log(inchesToHeight(59)); // 4'11
+
 </script>
 <p id="elementyById">yes</p>
 </body>
