@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table class="table" id="products">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Categories</th>
+    </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<button type="button" class="btn btn-primary" id="refresh">Refresh</button>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+(function() {
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+
+    const refresh = function() {
+        $.get('./data/inventory.json').done(function(data) {
+            console.log(data);
+            $('#insertProducts').html("");
+            data.forEach(function(e) {
+                $('#insertProducts').append(
+                    `<tr>
+                    <td>${e["title"]}</td>
+                    <td>${e["quantity"]}</td>
+                    <td>${e["price"]}</td>
+                    <td>${e["categories"].join(', ')}</td>
+                 </tr>`
+                );
+            });
+        });
+    }
+    refresh();
+
+    $('#refresh').click(refresh);
+})();
+</script>
+
+</body>
+</html>
