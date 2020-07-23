@@ -255,10 +255,23 @@
         }
         return `${Math.floor(input / 12)}'${input % 12}`;
     }
-
     console.log(inchesToHeight(78)); // 6'6
     console.log(inchesToHeight(65)); // 5'5
     console.log(inchesToHeight(59)); // 4'11
+
+    // take in string, return # of words, if not string return null
+    console.log("Take in string, return # of words, if not string return null");
+
+    function countWords(input) {
+        if(typeof input !== "string") {
+            return null;
+        }
+        input = input.split(" ");
+        return input.length;
+    }
+    console.log(countWords("Hello my name is Austin"));
+    console.log(countWords(true));
+    console.log(countWords("Yes, it is I. Dylan Bird is here!"));
 
 </script>
 <p id="elementyById">yes</p>
