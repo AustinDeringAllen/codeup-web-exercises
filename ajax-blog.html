@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .posts {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .post {
+            padding: 1em;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="m-3 text-center">
+            <h1><span id="first-span">The</span> <span id="second-span">Blog</span></h1>
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">Search Posts</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Title, Date, Tags, Content" aria-label="Username" aria-describedby="addon-wrapping" id="searchInput">
+            </div>
+        </header>
+
+        <div id="posts">
+            <div class="post">
+                <div class="post-header">
+                    <h2>How to skin a snake</h2>
+                    <h5>February 14, 2015</h5>
+                </div>
+                <div class="post-content">
+                    <p class="lead">Cupcake ipsum dolor sit amet gummies. Cake chocolate sweet ice cream oat cake biscuit bear claw dessert. Jujubes marzipan toffee apple pie pastry dragée jujubes marshmallow. Dragée chocolate gingerbread liquorice chocolate bar jujubes. Sweet chocolate bar jelly-o chocolate cake candy carrot cake cotton candy macaroon marzipan. Sweet roll biscuit sweet gummies topping sesame snaps tootsie roll sugar plum pie. Sweet muffin croissant chocolate cake chupa chups. Donut croissant gummies donut powder ice cream. Chupa chups halvah apple pie topping jelly beans donut candy canes donut. Bonbon cake gummi bears cheesecake tart topping powder liquorice gummi bears.</p>
+                    <p class="author">Dylan Bird</p>
+                </div>
+                <blockquote class="blockquote"
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+        (function() {
+            const renderPosts = function(data) {
+                let posts = $('#posts');
+                posts.html("");
+                data.reverse().forEach(function(e) {
+                    let html = `
+                        <div class="post">
+                            <div class="post-header">
+                                <h2 class="title">${e.title}</h2>
+                                <h5 class="date">${e.date}</h5>
+                            </div>
+                            <div class="post-content">
+                                <p class="lead">${e.content}</p>
+                                <h6 class="categories">${e.categories.join(' - ')}</h6>
+                            </div>
+                        </div>
+                    `;
+                    posts.append(html);
+                });
+            }
+
+            const sortPosts = function(data, input) {
+                let bucket = [];
+                data.forEach(function(e) {
+                    for(const key in e) {
+                        if(Array.isArray(e[key])) {
+                            if(e[key].join(' ').toLowerCase().includes(input)) {
+                                bucket.push(e);
+                                break;
+                            }
+                        } else {
+                            if(e[key].toLowerCase().includes(input)) {
+                                bucket.push(e);
+                                break;
+                            }
+                        }
+                    }
+                });
+                renderPosts(bucket);
+            }
+
+            const getPosts = function() {
+                $.get('./data/blog.json').done(function(data) {
+                    let input = $('#searchInput').val().toLowerCase();
+                    console.log(input);
+                    if(input === "") {
+                        renderPosts(data);
+                    } else {
+                        sortPosts(data, input);
+                    }
+                });
+            }
+
+            getPosts();
+            $('#searchInput').keyup(getPosts);
+        })();
+    </script>
+</body>
+</html>
