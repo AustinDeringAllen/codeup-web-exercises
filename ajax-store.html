@@ -3,56 +3,181 @@
 <head>
     <title>Online Store</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        #products {
+            border: 1px solid black;
+        }
+
+        .check-block {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
 </head>
 <body>
 
-<h1>My Tool Store</h1>
+    <h1 class="text-center">My Tool Store</h1>
 
-<table class="table" id="products">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Price</th>
-        <th scope="col">Categories</th>
-    </tr>
-    </thead>
-    <tbody id="insertProducts"></tbody>
-</table>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="searchInput">Search</label>
+                <input type="text" class="form-control form-control-lg" id="searchInput" aria-describedby="searchInput">
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="sort-price">Sort by price</label>
+                    <select name="sort-price" id="sort-price" class="form-control">
+                        <option value="default">Default Sorting</option>
+                        <option value="low">Low to High</option>
+                        <option value="high">High to Low</option>
+                    </select>
+                </div>
+                <div class="form-group form-check col-6">
+                    <p>Sort by Categories</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="tool" name="category">
+                        <label class="form-check-label" for="inlineCheckbox1">Tool</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="powered" name="category">
+                        <label class="form-check-label" for="inlineCheckbox2">Powered</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="gas" name="category">
+                        <label class="form-check-label" for="inlineCheckbox3">Gas</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="outdoor" name="category">
+                        <label class="form-check-label" for="inlineCheckbox4">Outdoor</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-<button type="button" class="btn btn-primary" id="refresh">Refresh</button>
+    <table class="table" id="products">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Categories</th>
+        </tr>
+        </thead>
+        <tbody id="insertProducts"></tbody>
+    </table>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script>
-(function() {
-    "use strict";
-    // TODO: Create an AJAX GET request for the file under data/inventory.json
-    // TODO: Take the data from inventory.json and append it to the products table
-    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-    //             its contents and fields
-    //       HINT: You will want to target #insertProducts for your new HTML elements
+    <button type="button" class="btn btn-primary" id="refresh">Refresh</button>
 
-    const refresh = function() {
-        $.get('./data/inventory.json').done(function(data) {
-            console.log(data);
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+    (function() {
+        "use strict";
+        // TODO: Create an AJAX GET request for the file under data/inventory.json
+        // TODO: Take the data from inventory.json and append it to the products table
+        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+        //             its contents and fields
+        //       HINT: You will want to target #insertProducts for your new HTML elements
+
+        const renderData = function(data) {
             $('#insertProducts').html("");
             data.forEach(function(e) {
                 $('#insertProducts').append(
                     `<tr>
-                    <td>${e["title"]}</td>
-                    <td>${e["quantity"]}</td>
-                    <td>${e["price"]}</td>
-                    <td>${e["categories"].join(', ')}</td>
-                 </tr>`
+                        <td>${e["title"]}</td>
+                        <td>${e["quantity"]}</td>
+                        <td>${e["price"]}</td>
+                        <td>${e["categories"].join(', ')}</td>
+                     </tr>`
                 );
             });
-        });
-    }
-    refresh();
+        }
+        //
+        // const sortPrice = function(data, price) {
+        //     if(price === "default") {
+        //         return data;
+        //     }
+        //
+        //     data.sort(function(a,b) {
+        //         if(data === "low") {
+        //             return a.price - b.price;
+        //         } else {
+        //             return b.price - a.price;
+        //         }
+        //     });
+        //
+        //     return data;
+        // }
 
-    $('#refresh').click(refresh);
-})();
-</script>
+        // const sortData = function(data, input, price, check) {
+        //     let bucket = [];
+        //     let searchInput = (input === "") ? false : true;
+        //     data.forEach(function(e) {
+        //         for(const key in e) {
+        //             if(typeof e[key] === 'number') {
+        //                 continue;
+        //             }
+        //
+        //             if(Array.isArray(e[key])) {
+        //                 if(e[key].join(' ').includes(check)) {
+        //                     bucket.push(e);
+        //                     break;
+        //                 }
+        //             } else if(searchInput){
+        //                 if(e[key].toLowerCase().includes(input)) {
+        //                     bucket.push(e);
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     });
+        // }
 
+        const getData = function() {
+            $.get('./data/inventory.json').done(function(data) {
+                let input = $('#searchInput').val().toLowerCase();
+                let price = $('#sort-price').val().toLowerCase();
+                let check = [];
+                $("input[name='category']:checked").each(function(i, e) {
+                    check.push(e.value);
+                });
+                if(input === "" && price === "default" && check.length === 0) {
+                    //renderData(data);
+                } else {
+                    check.join(' ').toLowerCase();
+                    sortData(data, input, price, check);
+                }
+            });
+        }
+        getData();
+
+        $(document).keyup(function(e) {
+            if(e.keyCode === 40) {
+                getData();
+            }
+        })
+
+        // const refresh = function() {
+        //     $.get('./data/inventory.json').done(function(data) {
+        //         console.log(data);
+        //         $('#insertProducts').html("");
+        //         data.forEach(function(e) {
+        //             $('#insertProducts').append(
+        //                 `<tr>
+        //                 <td>${e["title"]}</td>
+        //                 <td>${e["quantity"]}</td>
+        //                 <td>${e["price"]}</td>
+        //                 <td>${e["categories"].join(', ')}</td>
+        //              </tr>`
+        //             );
+        //         });
+        //     });
+        // }
+        // refresh();
+
+        $('#refresh').click(refresh);
+    })();
+    </script>
 </body>
 </html>
