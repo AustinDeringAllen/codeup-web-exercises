@@ -273,6 +273,21 @@
     console.log(countWords(true));
     console.log(countWords("Yes, it is I. Dylan Bird is here!"));
 
+    // 3 fizz 5 buzz, fizzbuzz // else pass || null
+    console.log('FizzBuzz2 Electric Boogaloo');
+    function fizzBuzz2(input) {
+        if(typeof input !== "number")
+            return null;
+
+        return (input % 3 === 0 ? "Fizz" : "") + (input % 5 === 0 ? "Buzz" : "") || input
+    }
+    console.log(fizzBuzz2(12));
+    console.log(fizzBuzz2(15));
+    console.log(fizzBuzz2("twelve"));
+    console.log(fizzBuzz2("12"));
+    console.log(fizzBuzz2(9));
+    console.log(fizzBuzz2(4));
+
 </script>
 <p id="elementyById">yes</p>
 </body>
