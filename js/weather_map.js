@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    mapboxgl.accessToken = mapboxKey;
+    let map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v9",
+        zoom: 12,
+        center: [-118.5369,34.2286]
+    });
+    let marker;
+
     const renderWeather = function(forecasts) {
         let html = "";
         forecasts.forEach(function(forecast) {
@@ -22,7 +31,6 @@ $(document).ready(function() {
     const getWeather = function(lat, lon) {
         let weatherMap = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${weatherMapKey}&units=imperial`;
         $.get(weatherMap).done(function(data) {
-            console.log(data);
             let bucket = [];
             data.daily.forEach((e, i) => {
                 if(i < 5) {
@@ -42,28 +50,47 @@ $(document).ready(function() {
         });
     }
 
-    const renderLocation = function() {
-        // mapboxgl.accessToken = mapboxKey;
-        // let map = new mapboxgl.Map({
-        //     container: "map",
-        //     style: "mapbox://styles/mapbox/streets-v9",
-        //     zoom: 10
-        // });
+    const renderLocation = function(coords) {
+        map.flyTo({
+            center: coords,
+            zoom: 12,
+            speed: 1.5,
+            curve: 1,
+            easing(t) {
+                return t;
+            },
+        });
+        if(marker)
+            marker.remove();
+        marker = new mapboxgl.Marker().setLngLat(coords).setDraggable(true).addTo(map).getElement();
     }
 
     const getLocation = function(location) {
         let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxKey}`;
         $.get(mapbox).done(function(data) {
-            console.log(data);
-            getWeather(data.features[0].center[1], data.features[0].center[0]);
-            //renderLocation();
+            let coords = data.features[0].center;
+            getWeather(coords[1],coords[0]);
+            renderLocation(coords);
         });
     }
+    getLocation('Northridge, CA');
+
+    map.on('click',function(e) {
+        let coords = [e.lngLat.lng,e.lngLat.lat];
+        let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords[0]},${coords[1]}.json?access_token=${mapboxKey}`;
+        getWeather(coords[1],coords[0]);
+        renderLocation(coords);
+        $.get(mapbox).done(function(data) {
+            $('#location').val("");
+            $('#location').attr('placeholder', data.features[0].place_name);
+        });
+    });
 
     $('#submit').click(function(e) {
         e.preventDefault();
-        let location = $('#location').val();
-        getLocation(location);
+        let location = $('#location');
+        location.attr("placeholder",location.val());
+        getLocation(location.val());
+        location.val("");
     });
-    getLocation("Northridge, CA");
 });
