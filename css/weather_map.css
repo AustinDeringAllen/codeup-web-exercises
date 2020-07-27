@@ -1,34 +1,54 @@
-/*.round {*/
-/*    width: 400px;*/
-/*    height: 30px;*/
-/*    background: white;*/
-/*    border: 1px solid gray;*/
-/*    border-radius: 20px;*/
-/*}*/
+header {
+    background-color: dodgerblue;
+    text-align: center;
+    color: #fff;
+}
 
-/*.content {*/
-/*    padding: 0 12px;*/
-/*    height: 100%;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*}*/
+h3 {
+    color: dodgerblue;
+}
 
-/*input {*/
-/*    flex: 1 1 auto;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    border: none;*/
-/*    box-shadow: none;*/
-/*    height: 100%;*/
-/*    background: transparent;*/
-/*}*/
+#submit {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
 
-/*input:focus .round {*/
-/*    outline: none;*/
-/*}*/
+.high {
+    color: orangered;
+}
+
+.low {
+    color: steelblue;
+}
+
+.round {
+    width: 100%;
+    height: 30px;
+    background: white;
+    border: 3px solid dodgerblue;
+    border-radius: 20px;
+}
+
+.content {
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
 input {
-    width: 100%;
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    height: 100%;
+    background: transparent;
+}
+
+input:focus {
+    outline: none;
 }
 
 #map {

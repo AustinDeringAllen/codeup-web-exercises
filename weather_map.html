@@ -17,14 +17,17 @@
     </header>
 
     <div class="container-fluid" style="width: 85%">
-<!--        <h2>You're currently looking at <br> Northridge California</h2>-->
         <form>
-            <label for="location">Place</label>
-            <input type="text" name="location" id="location" placeholder="Northridge, CA">
-            <button id="submit">Submit</button>
+            <div class="round">
+                <div class="content">
+                    <input type="text" name="location" id="location" placeholder="Northridge, CA">
+                </div>
+            </div>
+            <button id="submit" class="btn btn-primary mt-2">Get Weather</button>
         </form>
-        <h3>Five Day Forecast</h3>
-        <div id="card-block" class="d-flex justify-content-around mb-5"></div>
+        <hr class="m-2">
+        <h3>Five Day Forecast:</h3>
+        <div id="card-block" class="d-flex justify-content-around mb-4"></div>
 
         <div id="map"></div>
     </div>

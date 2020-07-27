@@ -14,9 +14,9 @@ $(document).ready(function() {
             let icon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
             let card = `
                 <div class="card" style="width: 15rem;">
-                <div id="weather-date" class="card-header">${forecast.date}</div>
+                <div id="weather-date" class="card-header text-center">${forecast.date}</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">${forecast.high.toFixed(1)}°F / ${forecast.low.toFixed(1)}°F</li>
+                    <li class="list-group-item text-center"><span class="high">${forecast.high.toFixed(1)}°F</span> / <span class="low">${forecast.low.toFixed(1)}°F</span></li>
                     <li class="list-group-item text-center"><img src=${icon} alt=""></li>
                     <li class="list-group-item">Weather: ${forecast.weather[0].main}</li>
                     <li class="list-group-item">Humidity: ${forecast.humidity}%</li>
