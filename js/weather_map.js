@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Initialize the map and have a marker variable to put the marker in when we create it.
     mapboxgl.accessToken = mapboxKey;
     let map = new mapboxgl.Map({
         container: "map",
@@ -8,6 +9,7 @@ $(document).ready(function() {
     });
     let marker;
 
+    // Renders the weather. Using the data that is passed in from getWeather.
     const renderWeather = function(forecasts) {
         let html = "";
         forecasts.forEach(function(forecast) {
@@ -18,7 +20,7 @@ $(document).ready(function() {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center"><span class="high">${forecast.high.toFixed(1)}°F</span> / <span class="low">${forecast.low.toFixed(1)}°F</span></li>
                     <li class="list-group-item text-center"><img src=${icon} alt=""></li>
-                    <li class="list-group-item">Weather: ${forecast.weather[0].main}</li>
+                    <li class="list-group-item">Weather: ${forecast.weather[0].description}</li>
                     <li class="list-group-item">Humidity: ${forecast.humidity}%</li>
                     <li class="list-group-item">Wind Speed: ${forecast.wind}mph</li>
                     <li class="list-group-item">Pressure: ${forecast.pressure}mmHg</li>
@@ -30,6 +32,7 @@ $(document).ready(function() {
         $('#card-block').html("").append(html);
     }
 
+    // Gets the weather using a latitute and longitude that's passed in.
     const getWeather = function(lat, lon) {
         let weatherMap = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${weatherMapKey}&units=imperial`;
         $.get(weatherMap).done(function(data) {
@@ -53,6 +56,7 @@ $(document).ready(function() {
         });
     }
 
+    // A function that will run when the marker has been moved.
     const markerDrag = function() {
         let coords = [marker.getLngLat().lng, marker.getLngLat().lat];
         let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords[0]},${coords[1]}.json?access_token=${mapboxKey}`;
@@ -64,6 +68,7 @@ $(document).ready(function() {
         });
     }
 
+    // This will move the map and also create a marker at that location.
     const renderLocation = function(coords) {
         map.flyTo({
             center: coords,
@@ -79,6 +84,7 @@ $(document).ready(function() {
         marker = new mapboxgl.Marker().setLngLat(coords).setDraggable(true).addTo(map).on('dragend', markerDrag);
     }
 
+    // Will get the coordinates from any location passed in.
     const getLocation = function(location) {
         let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxKey}`;
         $.get(mapbox).done(function(data) {
@@ -89,6 +95,7 @@ $(document).ready(function() {
     }
     getLocation('Northridge, CA');
 
+    // To handle the submit button.
     $('#submit').click(function(e) {
         e.preventDefault();
         let location = $('#location');
