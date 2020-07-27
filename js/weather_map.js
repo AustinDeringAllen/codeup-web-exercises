@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    "use strict";
+
     // Initialize the map and have a marker variable to put the marker in when we create it.
     mapboxgl.accessToken = mapboxKey;
     let map = new mapboxgl.Map({
@@ -14,13 +16,25 @@ $(document).ready(function() {
         let html = "";
         forecasts.forEach(function(forecast) {
             let icon = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+            let description = forecast.weather[0].description.split(' ').map((e) => e.replace(e[0],e[0].toUpperCase())).join(' ');
             let card = `
                 <div class="card" style="width: 15rem;">
                 <div id="weather-date" class="card-header text-center">${forecast.date}</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center"><span class="high">${forecast.high.toFixed(1)}°F</span> / <span class="low">${forecast.low.toFixed(1)}°F</span></li>
-                    <li class="list-group-item text-center"><img src=${icon} alt=""></li>
-                    <li class="list-group-item">Weather: ${forecast.weather[0].description}</li>
+                    <li class="list-group-item text-center p-0 align-middle">
+                    <div class="flip-outer">
+                        <div class="flip-inner">
+                            <div class="flip-front">
+                                <span class="high">${forecast.high.toFixed(1)}°F</span> / <span class="low">${forecast.low.toFixed(1)}°F</span>
+                            </div>
+                            <div class="flip-back">
+                                <span class="high">HIGH</span> / <span class="low">LOW</span>
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                    <li class="list-group-item text-center"><img src=${icon} alt="${forecast.weather[0].main}"></li>
+                    <li class="list-group-item">Weather: ${description}</li>
                     <li class="list-group-item">Humidity: ${forecast.humidity}%</li>
                     <li class="list-group-item">Wind Speed: ${forecast.wind}mph</li>
                     <li class="list-group-item">Pressure: ${forecast.pressure}mmHg</li>
