@@ -19,7 +19,7 @@ $(document).ready(function() {
             let description = forecast.weather[0].description.split(' ').map((e) => e.replace(e[0],e[0].toUpperCase())).join(' ');
             let card = `
                 <div class="card" style="width: 15rem;">
-                <div id="weather-date" class="card-header text-center">${forecast.date}</div>
+                <div id="weather-date" class="card-header text-center font-weight-bold">${forecast.date}</div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center p-0 align-middle">
                     <div class="flip-outer">
