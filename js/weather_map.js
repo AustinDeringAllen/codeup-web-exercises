@@ -5,7 +5,7 @@ $(document).ready(function() {
     mapboxgl.accessToken = mapboxKey;
     let map = new mapboxgl.Map({
         container: "map",
-        style: "mapbox://styles/mapbox/streets-v9",
+        style: "mapbox://styles/mapbox/outdoors-v11",
         zoom: 12,
         center: [-118.5369,34.2286]
     });
