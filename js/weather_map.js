@@ -11,6 +11,18 @@ $(document).ready(function() {
     });
     let marker;
 
+    const renderLoad = function() {
+        $('#card-block').html(`
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+        `);
+    }
+
     // Renders the weather. Using the data that is passed in from getWeather.
     const renderWeather = function(forecasts) {
         let html = "";
@@ -74,6 +86,7 @@ $(document).ready(function() {
     const markerDrag = function() {
         let coords = [marker.getLngLat().lng, marker.getLngLat().lat];
         let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords[0]},${coords[1]}.json?access_token=${mapboxKey}`;
+        renderLoad();
         getWeather(coords[1],coords[0]);
         renderLocation(coords);
         $.get(mapbox).done(function(data) {
@@ -103,6 +116,7 @@ $(document).ready(function() {
         let mapbox = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${mapboxKey}`;
         $.get(mapbox).done(function(data) {
             let coords = data.features[0].center;
+            renderLoad();
             getWeather(coords[1],coords[0]);
             renderLocation(coords);
         });
