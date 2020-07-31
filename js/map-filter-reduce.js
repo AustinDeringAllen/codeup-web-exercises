@@ -36,8 +36,8 @@ const users = [
     }
 ];
 
-let languages = users.filter(user => user.languages >= 3);
-console.log(`Three or more languages: ${languages}`);
+let languages = users.filter(user => user.languages.length >= 3);
+console.log(languages);
 
 let emails = users.map(user => user.email);
 console.log(`These are each users email address ${emails}`);
@@ -46,13 +46,13 @@ let experience = users.reduce((sum, user) => sum + user.yearsOfExperience, 0);
 console.log(`The average years of experience is: ${experience / users.length}`);
 
 let longestEmail = users.reduce((longest, current) => {
-    if(current.email.length > longest.email.length) {
-        return current;
+    if(current.email.length > longest.length) {
+        return current.email;
     } else {
         return longest;
     }
-}, users[0]);
-console.log(`The longest email is ${longestEmail.email} characters in length`);
+}, "");
+console.log(`The longest email is ${longestEmail} characters in length`);
 
 let nameString = users.reduce((string, current) => string + " " + current.name, "");
 console.log(nameString);
