@@ -2,11 +2,8 @@
     /* Part 1 */
     const getLastCommit = (username) => {
         const url = `https://api.github.com/users/${username}/events/public`;
-        fetch(url).then((data) => data.json()).then(data => {
-            console.log(data[0].created_at);
-        });
+        return fetch(url);
     }
-    getLastCommit("austinderingallen");
 
     /* Part 2 */
     const wait = (num) => {
@@ -26,7 +23,11 @@
 
     $('#user-submit').click((e) => {
         e.preventDefault();
-        getLastCommit($('#user-input').val());
+        const promise = getLastCommit($('#user-input').val());
+        promise.then(data => data.json()).then(data => {
+            const time = new Date(data[0].created_at);
+            console.log(time);
+        });
     });
 
     $('#seconds-submit').click((e) => {
